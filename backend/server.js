@@ -1,8 +1,16 @@
-require('dotenv').config();
+require('dotenv').config({ path: '../.env' });
 const express = require('express');
 const cors = require('cors');
 const { subDays } = require('date-fns');
 const { getSummaryMetrics, getPageViews, getTrafficSources, getDeviceUsage, getVisitsByCountry } = require('./services/ga4Service');
+
+// Log environment variables for debugging
+console.log('Environment variables check:');
+console.log('- GA4_PROPERTY_ID:', process.env.GA4_PROPERTY_ID || 'not set');
+console.log('- VITE_GA_PROPERTY_ID:', process.env.VITE_GA_PROPERTY_ID || 'not set');
+console.log('- GA4_CLIENT_EMAIL exists:', !!process.env.GA4_CLIENT_EMAIL);
+console.log('- GA4_PRIVATE_KEY exists:', !!process.env.GA4_PRIVATE_KEY);
+console.log('- PORT:', process.env.PORT || '3001 (default)');
 
 const app = express();
 app.use(cors());

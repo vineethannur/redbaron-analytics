@@ -1,24 +1,36 @@
 const { BetaAnalyticsDataClient } = require('@google-analytics/data');
-require('dotenv').config();
+
+// Get environment variables with fallbacks
+const propertyId = process.env.GA4_PROPERTY_ID || process.env.VITE_GA_PROPERTY_ID;
+const clientEmail = process.env.GA4_CLIENT_EMAIL || process.env.VITE_GA_CLIENT_EMAIL;
+const privateKey = (process.env.GA4_PRIVATE_KEY || process.env.VITE_GA_PRIVATE_KEY)?.replace(/\\n/g, '\n');
+
+// Log environment variables for debugging
+console.log('GA4Service environment check:');
+console.log('- Property ID exists:', !!propertyId);
+console.log('- Client email exists:', !!clientEmail);
+console.log('- Private key exists:', !!privateKey);
 
 // Initialize the Google Analytics Data API client
 let analyticsDataClient;
 try {
-  analyticsDataClient = new BetaAnalyticsDataClient({
-    credentials: {
-      client_email: process.env.GA4_CLIENT_EMAIL,
-      private_key: process.env.GA4_PRIVATE_KEY?.replace(/\\n/g, '\n')
-    }
-  });
-  console.log('GA4 client initialized successfully');
+  if (propertyId && clientEmail && privateKey) {
+    analyticsDataClient = new BetaAnalyticsDataClient({
+      credentials: {
+        client_email: clientEmail,
+        private_key: privateKey
+      }
+    });
+    console.log('GA4 client initialized successfully');
+  } else {
+    console.warn('Missing GA4 credentials, will use mock data');
+  }
 } catch (error) {
   console.error('Error initializing GA4 client:', error);
   console.log('Will use mock data for all requests');
 }
 
-// Get the property ID from environment variables
-const propertyId = process.env.GA4_PROPERTY_ID;
-console.log('Using GA4 property ID:', propertyId);
+console.log('Using GA4 property ID:', propertyId || 'Not set (using mock data)');
 
 // Mock data for fallback
 const MOCK_SUMMARY_METRICS = {
