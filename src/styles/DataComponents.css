@@ -1,0 +1,495 @@
+.data-component-container {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: left;
+}
+
+.data-component-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.data-component-container h2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-top: 0;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.date-range-info {
+  font-size: 12px;
+  color: var(--text-color-secondary);
+  margin-bottom: 20px;
+}
+
+.data-note {
+  margin-top: 4px;
+  color: var(--text-color-secondary);
+  font-style: italic;
+  font-size: 11px;
+}
+
+.data-loading,
+.data-error,
+.no-data,
+.empty-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: var(--text-color-secondary);
+  font-size: 14px;
+  text-align: center;
+}
+
+.data-loading::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--border-color);
+  border-top: 3px solid #4285F4;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 12px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.data-error {
+  padding: 20px;
+  text-align: center;
+  color: #ea4335;
+  background-color: rgba(234, 67, 53, 0.1);
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.no-data {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-color-secondary);
+  background-color: var(--hover-bg);
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+/* Donut chart styles */
+.donut-chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 20px;
+  text-align: center;
+}
+
+.donut-segment {
+  transition: all 0.3s ease;
+}
+
+.donut-segment:hover {
+  stroke-width: 22;
+  filter: drop-shadow(0 0 5px var(--shadow-color));
+}
+
+.donut-center-text {
+  fill: var(--text-color);
+  font-weight: 600;
+}
+
+.donut-center-label {
+  fill: var(--text-color-secondary);
+}
+
+/* Pie chart styles (legacy) */
+.pie-chart {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 20px;
+  filter: drop-shadow(0 2px 5px var(--shadow-color));
+}
+
+.pie-segment {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  clip-path: polygon(50% 50%, 100% 0, 100% 100%, 50% 100%);
+  transform-origin: center;
+  transition: transform 0.3s;
+}
+
+.pie-segment:hover {
+  transform: scale(1.05);
+}
+
+.pie-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color);
+  text-align: center;
+  background-color: transparent;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: none;
+}
+
+.pie-total {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--text-color);
+}
+
+/* Legend styles */
+.data-legend {
+  margin-top: auto;
+  text-align: left;
+}
+
+.legend-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.legend-label-container {
+  display: flex;
+  align-items: center;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  margin-right: 10px;
+}
+
+.legend-label {
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.legend-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+}
+
+.legend-percentage {
+  font-size: 12px;
+  color: var(--text-color-secondary);
+  margin-left: 4px;
+  font-weight: normal;
+}
+
+/* Bar chart styles (vertical) */
+.bar-chart-container {
+  margin: 20px 0;
+  height: 220px;
+}
+
+.bar-chart {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 180px;
+  padding-bottom: 10px;
+}
+
+.bar-chart-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  max-width: 60px;
+}
+
+.bar-chart-bar-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.bar-chart-bar {
+  width: 70%;
+  min-height: 4px;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  transition: height 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.bar-chart-bar:hover {
+  width: 80%;
+  filter: brightness(1.1);
+  box-shadow: 0 0 10px var(--shadow-color);
+}
+
+.bar-chart-value {
+  position: absolute;
+  top: -25px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-color);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.bar-chart-bar:hover .bar-chart-value {
+  opacity: 1;
+}
+
+.bar-chart-label {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-color-secondary);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.bar-chart-percentage {
+  font-size: 10px;
+  color: var(--text-color-secondary);
+  margin-left: 3px;
+}
+
+/* Horizontal bars styles (legacy) */
+.horizontal-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.bar-item {
+  margin-bottom: 2px;
+}
+
+.bar-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.bar-label {
+  color: var(--text-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 65%;
+}
+
+.bar-value {
+  font-weight: 500;
+  color: var(--text-color);
+  text-align: right;
+}
+
+.bar-container {
+  height: 8px;
+  background-color: var(--hover-bg);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.total-sessions {
+  margin-top: 16px;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color-secondary);
+  border-top: 1px solid var(--border-color);
+  padding-top: 12px;
+  margin-top: auto; /* Push to bottom */
+}
+
+/* For more compact layout */
+.traffic-sources-compact .horizontal-bars {
+  gap: 8px;
+}
+
+.traffic-sources-compact .bar-item {
+  margin-bottom: 0;
+}
+
+.traffic-sources-compact .bar-header {
+  margin-bottom: 2px;
+}
+
+/* Country list styles */
+.country-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+  text-align: left;
+}
+
+.country-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  transition: background-color 0.2s;
+  border-radius: 4px;
+}
+
+.country-item:hover {
+  background-color: var(--hover-bg);
+}
+
+.country-name-container {
+  display: flex;
+  align-items: center;
+}
+
+.country-name {
+  font-size: 14px;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.country-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+}
+
+/* Others row styling */
+.others-row {
+  background-color: var(--hover-bg);
+  border-radius: 4px;
+  font-style: italic;
+}
+
+.note {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--text-color-secondary);
+  margin-top: 16px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .data-component-container {
+    padding: 16px;
+  }
+  
+  .data-component-container h2 {
+    font-size: 16px;
+  }
+  
+  .legend-item {
+    margin-bottom: 8px;
+  }
+  
+  .legend-label, .legend-value {
+    font-size: 13px;
+  }
+  
+  .legend-percentage {
+    font-size: 11px;
+  }
+  
+  .donut-chart-container svg {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .pie-chart {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .pie-total {
+    font-size: 20px;
+  }
+  
+  .pie-label {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .horizontal-bars {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .data-component-container {
+    padding: 12px;
+  }
+  
+  .donut-chart-container svg {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .legend-color {
+    width: 10px;
+    height: 10px;
+    margin-right: 8px;
+  }
+  
+  .date-range-info {
+    margin-bottom: 12px;
+  }
+  
+  .data-loading, .data-error, .no-data, .empty-chart {
+    height: 160px;
+  }
+}
+
+/* Headers and titles should all be left-aligned */
+h1, h2, h3, h4, h5, h6, .data-component-container h2 {
+  text-align: left;
+}
+
+/* Ensure all data for device usage, traffic sources, and country visits are left-aligned except for specific center-aligned elements */
+.bar-header, .bar-label, .country-name, .legend-label {
+  text-align: left;
+} 

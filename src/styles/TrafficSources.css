@@ -1,0 +1,95 @@
+.traffic-sources-container {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.traffic-sources-container h2 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: #333;
+}
+
+.date-range-info {
+  margin-bottom: 15px;
+  color: #666;
+  font-size: 12px;
+}
+
+.traffic-sources-loading, .traffic-sources-error, .no-data {
+  padding: 20px;
+  text-align: center;
+  color: #666;
+}
+
+.traffic-sources-error {
+  color: #d32f2f;
+}
+
+.sources-list {
+  margin-bottom: 20px;
+}
+
+.source-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.source-name {
+  font-weight: 500;
+}
+
+.source-sessions, .source-percentage {
+  color: #666;
+}
+
+.sources-chart {
+  display: flex;
+  height: 30px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.chart-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  transition: width 0.3s ease;
+}
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  margin-right: 6px;
+}
+
+.legend-label {
+  color: #555;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} 
