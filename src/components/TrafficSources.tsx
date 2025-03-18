@@ -42,7 +42,10 @@ export const TrafficSources: React.FC<TrafficSourcesProps> = ({ startDate, endDa
         ];
         
         try {
-          const response = await fetch(`${import.meta.env.VITE_API_URL}/api/traffic-sources?startDate=${startDate}&endDate=${endDate}`, {
+          // Get API URL - Use VITE_API_URL if defined, otherwise use relative URL
+          const apiBaseUrl = import.meta.env.VITE_API_URL || '';
+          
+          const response = await fetch(`${apiBaseUrl}/api/traffic-sources?startDate=${startDate}&endDate=${endDate}`, {
             signal: AbortSignal.timeout(5000) // 5 second timeout
           });
           

@@ -42,7 +42,10 @@ export const VisitsByCountry: React.FC<VisitsByCountryProps> = ({ startDate, end
         ];
         
         try {
-          const response = await fetch(`${import.meta.env.VITE_API_URL}/api/visits-by-country?startDate=${startDate}&endDate=${endDate}`, {
+          // Get API URL - Use VITE_API_URL if defined, otherwise use relative URL
+          const apiBaseUrl = import.meta.env.VITE_API_URL || '';
+          
+          const response = await fetch(`${apiBaseUrl}/api/visits-by-country?startDate=${startDate}&endDate=${endDate}`, {
             signal: AbortSignal.timeout(5000) // 5 second timeout
           });
           

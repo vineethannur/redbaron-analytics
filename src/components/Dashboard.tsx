@@ -141,7 +141,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
   return (
     <div className="dashboard-container" ref={dashboardRef}>
       <div className="dashboard-header">
-        <img src={isDarkMode ? "../assets/logo-dark.png" : "../assets/logo.png"} alt="Logo" className="logo" />
+        <img src={isDarkMode ? "/assets/logo-dark.png" : "/assets/logo.png"} alt="Logo" className="logo" />
         <div className="header-controls">
           <div className="date-picker-container">
             <DateRangePicker 
